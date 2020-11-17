@@ -11,7 +11,10 @@ mydb = mysql.connector.connect(
 
 printer = Printer(0)
 
-choice = input(printer.printOptions())
+while (True):
+    choice = input(printer.printOptions())
+    if choice != 'INVALID':
+        break
 
 caller = Caller(choice)
 query = caller.retrieveQuery()
