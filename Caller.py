@@ -1,32 +1,31 @@
 from Reader import Reader
 
 class Caller:
-    def __init__(self, choice):
-        self.choice = choice
+    def __init__(self):
         self.reader = Reader()
 
-    def retrieveQuery(self):
-        if self.choice == '1':
-            self.reader.read1()
-        elif self.choice == '2':
-            self.reader.read2()
-        elif self.choice == '3':
-            self.reader.read3()
-        elif self.choice == '4':
-            self.reader.read4()
-        elif self.choice == '5':
-            self.reader.read5()
-        elif self.choice == '6':
-            self.reader.read6()
-        elif self.choice == '7':
-            self.reader.read7()
-        elif self.choice == '8':
-            self.reader.read8()
-        elif self.choice == '9':
-            self.reader.read9()
-        elif self.choice == '10':
-            self.reader.read10()
-        elif self.choice == '0':
-            self.reader.exitCall()
+    def retrieveQuery(self, choice):
+        if choice == '1':
+            return self.reader.read1()
+        elif choice == '2':
+            return self.reader.read2()
+        elif choice == '3':
+            return self.reader.read3()
+        elif choice == '4':
+            return self.reader.read4()
+        elif choice == '5':
+            return self.reader.read5()
+        elif choice == '6':
+            return self.reader.read6()
+        elif choice == '7':
+            return self.reader.read7()
+        elif choice == '8':
+            return self.reader.read8()
+        elif choice == '9':
+            return self.reader.read9()
+        elif choice == '10':
+            return self.reader.read10()
+        elif choice == '0':
+            return self.reader.exitCall()
         else:
-            self.reader.callFailed()
+            return self.reader.callFailed()

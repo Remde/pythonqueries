@@ -2,6 +2,9 @@ import mysql.connector
 from Caller import Caller
 from Printer import Printer
 
+caller = Caller()
+printer = Printer(0)
+
 mydb = mysql.connector.connect(
   host="localhost",
   user="user",
@@ -9,19 +12,17 @@ mydb = mysql.connector.connect(
   database="steam"
 )
 
-printer = Printer(0)
+while(True):
+    while (True):
+        choice = input(printer.printOptions())
+        query = caller.retrieveQuery(choice)
+        if query != 'INVALID':
+            break
 
-while (True):
-    choice = input(printer.printOptions())
-    if choice != 'INVALID':
-        break
+    cursor = mydb.cursor()
+    cursor.execute(query)
 
-caller = Caller(choice)
-query = caller.retrieveQuery()
+    results = cursor.fetchall()
 
-cursor = mydb.cursor()
-cursor.execute(query)
-
-results = cursor.fetchall()
-
-printer.printResults(results)
+    printer.printResults(results)
+    choice = input(printer.printFinalOutput())

@@ -3,7 +3,7 @@ class Reader:
         pass
 
     def read1(self):
-        return "SELECT * FROM customers"
+        return "SELECT * FROM Perfil"
 
     def read2(self):
         return "SELECT * FROM customers"
@@ -36,5 +36,5 @@ class Reader:
         return exit()
 
     def callFailed(self):
-        print ("Entrada inválida. Tente novamente.")
+        choice = input("\n\nEntrada inválida. Aperte Enter para tentar novamente.")
         return 'INVALID'
