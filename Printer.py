@@ -5,7 +5,7 @@ class Printer:
 
     def printOptions(self):
         return("0.\t SAIR\n\n"
-        "1.\t Grupos com um número mínimo de participantes\n"
+        "1.\t Grupos com participantes acima de X\n"
         "2.\t Quantidade de amigos por perfil\n"
         "3.\t Quantidade de notícias por empresa distribuidora\n"
         "4.\t Categorias sem nenhum programa\n"
