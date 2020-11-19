@@ -12,7 +12,6 @@ mydb = mysql.connector.connect(
 )
 
 while(True):
-    query = {}
     printer = Printer(0)
     while (True):
         choice = input(printer.printOptions())
