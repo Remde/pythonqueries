@@ -1,7 +1,7 @@
 CREATE TABLE Perfil (
   idPerfil INT(6) NOT NULL,
   nivel INT(3) NOT NULL,
-  nome VARCHAR(20) NOT NULL,
+  nomePerfil VARCHAR(20) NOT NULL,
   avatar BLOB,
   saldo NUMERIC(8,2) NOT NULL,
   email VARCHAR(30) NOT NULL UNIQUE,
@@ -38,7 +38,7 @@ INSERT INTO Promocoes VALUES (3, '2021-02-03', '2021-02-05', 80);
 CREATE TABLE Programa (
   idPrograma INT(6) NOT NULL,
   idPromocao INT(6),
-  nome VARCHAR(100) NOT NULL UNIQUE,
+  nomeProg VARCHAR(100) NOT NULL UNIQUE,
   descricao TEXT NOT NULL,
   linkDownload VARCHAR(50) NOT NULL,
   propriedades LONGTEXT NOT NULL,
@@ -86,7 +86,7 @@ Outras observações: 4GB System RAM.', 19.99, '2014-06-10', '' , null, null);
 
 CREATE TABLE Item (
   idItem INT(6) NOT NULL,
-  nome VARCHAR(70) NOT NULL UNIQUE,
+  nomeItem VARCHAR(70) NOT NULL UNIQUE,
   descricao TEXT NOT NULL,
   valorEmGemas INT(5),
   idPrograma int(6) NOT NULL,
@@ -123,7 +123,7 @@ ou um Chapéu Incomum Série 2 Excessivamente Raro!', null, 1);
 
 CREATE TABLE Empresa (
   idEmpresa INT(6) NOT NULL,
-  nome VARCHAR(20) NOT NULL UNIQUE,
+  nomeEmp VARCHAR(20) NOT NULL UNIQUE,
   logo BLOB,
   linkYoutube VARCHAR(60),
   linkTwitter VARCHAR(50),
@@ -164,7 +164,7 @@ INSERT INTO Cosmetico VALUES (3, null, null, 'Estranho');
 
 CREATE TABLE Marcadores (
   idMarcador INT(6) NOT NULL,
-  nome VARCHAR(30) NOT NULL,
+  nomeMarc VARCHAR(30) NOT NULL UNIQUE,
   PRIMARY KEY(idMarcador)
 );
 
@@ -299,7 +299,7 @@ INSERT INTO Cartao VALUES ('1122334455667788', 1, 'Hipercard', 101, '2020-12-01'
 
 CREATE TABLE Categoria (
   idCategoria INT(6) NOT NULL,
-  nome VARCHAR(15) NOT NULL UNIQUE,
+  nomeCat VARCHAR(15) NOT NULL UNIQUE,
   PRIMARY KEY(idCategoria)
 );
 
@@ -347,7 +347,7 @@ INSERT INTO Contem VALUES (2, 1, 3);
 CREATE TABLE Grupo (
   idGrupo INT(6) NOT NULL,
   descricao TEXT NOT NULL,
-  nome VARCHAR(30) NOT NULL,
+  nomeGrupo VARCHAR(30) NOT NULL,
   abreviacao VARCHAR(5) NOT NULL,
   dataFundacao DATE NOT NULL,
   pais VARCHAR(20),
@@ -365,7 +365,7 @@ INSERT INTO Grupo VALUES(3, 'Grupo destinado apenas a pessoas que trabalham com 
 CREATE TABLE Insignia (
   idInsignia INT(6) NOT NULL,
   XP INT(6) NOT NULL,
-  nome VARCHAR(60) NOT NULL UNIQUE,
+  nomeInsig VARCHAR(60) NOT NULL UNIQUE,
   descricao TEXT NOT NULL,
   PRIMARY KEY(idInsignia)
 );
@@ -509,3 +509,12 @@ INSERT INTO Tema VALUES(3, 3);
 INSERT INTO Tema VALUES(4, 3);
 INSERT INTO Tema VALUES(5, 1);
 INSERT INTO Tema VALUES(5, 2);
+
+
+CREATE VIEW AnaliseUserNaoBanido as
+	SELECT * FROM perfil 				
+	NATURAL JOIN analise
+	NATURAL JOIN programa
+	NATURAL JOIN compra	
+	WHERE perfil.isBanido = 0
+				

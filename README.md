@@ -15,4 +15,13 @@ Additional database setup configuration might be needed depending on your networ
 
 ## Queries Index
 
-*Insert queries*
+1. Groups with a minimum (parametrized) number of participants
+2. Number of friend by profile
+3. Number of news by publishing company
+4. Categories with no programs
+5. Programs produced by more than one company
+6. Positive analysis by non-banned users
+7. Number of users that earned an insignia before a (parametrized) year, for each insignia
+8. Number of items for each user, ordered by the user's level
+9. Chest items and cosmetics that can be obtained in them
+10. Programs with a certain (parametrized) marker with a discount

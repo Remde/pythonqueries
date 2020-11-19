@@ -3,7 +3,6 @@ from Caller import Caller
 from Printer import Printer
 
 caller = Caller()
-printer = Printer(0)
 
 mydb = mysql.connector.connect(
   host="localhost",
@@ -13,16 +12,18 @@ mydb = mysql.connector.connect(
 )
 
 while(True):
+    query = {}
+    printer = Printer(0)
     while (True):
         choice = input(printer.printOptions())
         query = caller.retrieveQuery(choice)
-        if query != 'INVALID':
+        if query["call"] != 'INVALID':
             break
 
     cursor = mydb.cursor()
-    cursor.execute(query)
+    cursor.execute(query["call"])
 
     results = cursor.fetchall()
 
-    printer.printResults(results)
+    printer.printResults(results, query["header"])
     choice = input(printer.printFinalOutput())

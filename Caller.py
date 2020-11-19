@@ -5,26 +5,50 @@ class Caller:
         self.reader = Reader()
 
     def retrieveQuery(self, choice):
+        query = {}
         if choice == '1':
-            return self.reader.read1()
+            minimumNumberOfParticipants = input("Qual o número mínimo de participantes? ")
+            query["call"] = self.reader.getGroupsWithOverXParticipants(minimumNumberOfParticipants)
+            query["header"] = "GRUPO, PARTICIPANTE"
+            return query
         elif choice == '2':
-            return self.reader.read2()
+            query["call"] = self.reader.getNumberOfFriendsByProfile()
+            query["header"] = "NOME, AMIGOS"
+            return query
         elif choice == '3':
-            return self.reader.read3()
+            query["call"] = self.reader.getNumberOfNewsByPublisher()
+            query["header"] = "PUBLISHER, NEWS"
+            return query
         elif choice == '4':
-            return self.reader.read4()
+            query["call"] = self.reader.getCategoriesWithoutProgram()
+            query["header"] = "CATEGORIA"
+            return query
         elif choice == '5':
-            return self.reader.read5()
+            query["call"] = self.reader.getProgramsByMoreThanOneCompany()
+            query["header"] = "PROGRAMA, EMPRESA"
+            return query
         elif choice == '6':
-            return self.reader.read6()
+            query["call"] = self.reader.getPositiveReviewsByNonBanned()
+            query["header"] = "PERFIL, PROGRAMA, HORAS, TEXTO"
+            return query
         elif choice == '7':
-            return self.reader.read7()
+            year = input("Antes de qual ano? ")
+            query["call"] = self.reader.getNumberOfUserForEachInsigniasBeforeYear(year)
+            query["header"] = "INSIGNIA, USUARIOS"
+            return query
         elif choice == '8':
-            return self.reader.read8()
+            query["call"] = self.reader.getNumberOfItemsByUserOrderedByLevel()
+            query["header"] = "USUARIO, NIVEL, ITENS"
+            return query
         elif choice == '9':
-            return self.reader.read9()
+            query["call"] = self.reader.getCosmeticsByChest()
+            query["header"] = "BAU, COSMETICO, QUALIDADE"
+            return query
         elif choice == '10':
-            return self.reader.read10()
+            marker = input("Qual marcador você deseja? ")
+            query["call"] = self.reader.getProgramsWithMarkerAndDiscount(marker)
+            query["header"] = "JOGO, DESCONTO, DATA DE INICIO, DATA DE FIM"
+            return query
         elif choice == '0':
             return self.reader.exitCall()
         else:
